@@ -1,0 +1,93 @@
+<1a 2D Linear Convolution-->
+
+clc;
+x = [1,2,3;4,5,6;7,8,9];
+h = [1;1;1];
+disp(y,'Linear convolution result y=');
+y = conv2(x,h);
+
+
+<1b Circular Convolution between two 2D matrices-->
+
+clc;
+x=[1,2;3,4];
+h=[5,6;7,8];
+X=fft2(x);
+H=fft2(h);
+Y=X.*H;
+y=ifft(Y);
+disp(y,'Cicular Convolution Result Y=')
+
+<2 Circular Convolution expressed as linear convolution plus alias>
+
+clc;
+x=[1,2;3,4];
+h=[5,6;7,8];
+y=conv2(x,h);
+y1=[y(:,1)+y(:,$),y(:,2)];
+y2=[y1(1,:)+y1($,:);y1(2,:)];
+disp(y,'Linear Covolution result y=');
+disp(y2,'Cicular Linear Convolution expressed as Linear convolution plus alias=');
+
+<3a Linear Cross correlation of a 2D matrix>
+
+clc;
+x=[3,1;2,4];
+h1=[1,5;2,3];
+h2=h1(:,$:-1:1);
+h=h2($:-1:1,:);
+y=conv2(x,h)
+disp(y,'Linear cross correlation of 2D matrix y=')    
+
+<3b Circular correlation between two signals>
+
+clc;
+X=[1,5;2,4];
+h=[3,2;4,1];
+h2=h1(:,$:-1:1);
+h3=h2($:-1:1,:);
+X=fft2(x);
+H=fft2(h3);
+Y=X.*H;
+y=ifft(Y);
+disp(y,'Circular Correlation Result y=')    
+
+<3c Linear auto correlation of a 2D matrix>
+
+clc;
+x1=[1,1;1,1];
+x2=x1(:,$:-1:1);
+x2=x2($:-1:1,:)
+x=conv2(x1,x2)
+disp(x,'Linear auto correlation result x=')  
+
+<4 DFT of 4x4 gray scale image>
+
+clc;
+f=[1,1,1,1;1,1,1,1;1,1,1,1;1,1,1,1];
+t=fft2(f);
+disp(t,'display')    
+
+<5a Compute discrete cosine transform>
+
+clc;
+N=[1,2,3,4]
+x=dct(N);
+disp(x,'DCt matrix of order four')    
+
+<5b Program to perform KL transform for the given 2D matrix>
+
+clc;
+f=[1,1,1,1;1,1,1,1;1,1,1,1;1,1,1,1];
+N=4
+for k=0:N-1
+for l=0:N-1
+w(k+1,l+1)=int(cos((2*%pi*k*1)/N)-%i*sin((2*%pi*k*1)/N))
+end
+end
+disp(w,'Kernel Matrix of 2D DFT=')
+F=w*f*w 
+disp(F,'2D DFT of given 2D image=')  
+    
+
+
