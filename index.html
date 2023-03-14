@@ -88,6 +88,101 @@ end
 disp(w,'Kernel Matrix of 2D DFT=')
 F=w*f*w 
 disp(F,'2D DFT of given 2D image=')  
-    
 
+<6a Brightness Enhancement>
+
+clc;
+close;
+a = imread(fullpath(getIPCVpath()+"/images/"+'baboon.png'));
+[m,n] = size(a);
+//t = input(Enter The Threshold Parameter);
+for i = 1:m
+for j = 1:n
+b(i,j)=50+a(i,j);
+end
+end
+figure(1)
+imshow(a);
+title('Original Image')
+figure(2)
+imshow(b);
+title('Brightness Enhancement');
+
+<6b Brightness Suprression of an image>
+
+clc;
+close;
+a = imread(fullpath(getIPCVpath()+"/images/"+'baboon.png'));
+[m,n] = size(a);
+//t = input(Enter The Threshold Parameter);
+for i = 1:m
+for j = 1:n
+b(i,j)=a(i,j)-50;
+end
+end
+figure(1)
+imshow(a);
+title('Original Image')
+figure(2)
+imshow(b);
+title('Brightness suprression of an image');
+
+<6c Contrast Manipulation>
+
+clc;
+close;
+a = imread(fullpath(getIPCVpath()+"/images/"+'baboon.png'));
+[m,n] = size(a);
+//t = input(Enter The Threshold Parameter);
+for i = 1:m
+for j = 1:n
+b(i,j)=a(i,j)*1.5;
+end
+end
+figure(1)
+imshow(a);
+title('Original Image')
+figure(2)
+imshow(b);
+title('Contrast Manipulation of an image');
+
+<6d Negative Image>
+    
+a = imread(fullpath(getIPCVpath()+"/images/"+'baboon.png'));
+[m,n] = size(a);
+//t = imput(Enter The Threshold Parameter);
+for i = 1:m
+for j = 1:n
+b(i,j)=255-a(i,j);
+end
+end
+figure(1)
+imshow(a);
+title('Original Image');
+figure(2)
+imshow(b);
+title('Image Negative');
+
+<7a Perform Threshold Operation>
+
+a = imread(fullpath(getIPCVpath()+"/images/"+'baboon.png'));
+a = rgb2gray(a);
+[m, n] = size(a);
+//t = input(Enter The Threshold Parameter);
+for i = 1:m
+for j = 1:n
+if (a(i,j)<100)
+b(i,j)=0;
+else
+b(i,j)= 255;
+end
+end
+end
+// Output Section
+figure(1)
+imshow(a);
+title('Original Image');
+figure(2)
+imshow(b);
+title('Threshold Image');
 
